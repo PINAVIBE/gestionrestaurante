@@ -1,4 +1,3 @@
-// ===== Datos (por ahora en localStorage; luego se cambia por la base de datos) =====
 const K = 'comedor_db';
 const hoy = () => new Date().toISOString();
 const seed = () => ({
@@ -30,7 +29,6 @@ db.productos.forEach(p => {
 const save = () => { try { localStorage.setItem(K, JSON.stringify(db)); } catch { } };
 const nextId = arr => Math.max(0, ...arr.map(x => x.id)) + 1;
 
-// ===== Estado y utilidades =====
 let user = null, vista = '', cart = {}, filtro = 'Todos';
 const $ = s => document.querySelector(s);
 const money = n => '$' + n.toLocaleString('es-CO');
@@ -54,7 +52,6 @@ function form(titulo, campos, cb) {
   dlg.showModal();
 }
 
-// ===== Vistas =====
 const V = {
   menu() {
     const cats = ['Todos', ...new Set(db.productos.map(p => p.cat))];
@@ -127,7 +124,6 @@ function render() {
   $('#view').innerHTML = V[vista]();
 }
 
-// ===== Acciones =====
 const campoProd = p => [{k:'nombre',l:'Nombre',v:p.nombre},{k:'cat',l:'Categoría',o:['Almuerzos','Snacks','Bebidas','Postres'],v:p.cat},
   {k:'desc',l:'Descripción',v:p.desc},
   {k:'precio',l:'Precio',t:'number',v:p.precio},{k:'stock',l:'Stock actual',t:'number',v:p.stock},{k:'min',l:'Stock mínimo',t:'number',v:p.min}];
