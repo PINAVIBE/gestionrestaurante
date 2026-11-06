@@ -103,9 +103,18 @@ button.danger {
   color: var(--mute);
 }
 
-.login-box button:nth-of-type(3) {
-  background: var(--sun);
-  color: var(--ink);
+.login-box button[type="button"].link,
+.login-box button.link {
+  background: none;
+  color: var(--main);
+  text-decoration: underline;
+  padding: 0.3rem;
+}
+
+#loginErr {
+  color: var(--red);
+  font-weight: 600;
+  min-height: 1.2em;
 }
 
 #app {
